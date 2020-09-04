@@ -74,7 +74,7 @@ const Registration = () => {
         <Grid item>
         <Typography component = "h1"
         variant = "h5" >
-        Registraction
+        Registration
         </Typography>  
         </Grid> 
 
@@ -146,7 +146,7 @@ const Registration = () => {
                 color = "primary"
                 type = "submit"
                 className = "button-block" >
-        Create count </Button>  
+        Create Account </Button>  
         </Grid>  
         </Grid>  
         </form>
