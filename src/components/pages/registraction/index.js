@@ -13,7 +13,7 @@ import {
     Link,
 } from "@material-ui/core";
 import './index.css';
-
+import AppBarMenu from '../../menu/AppBar'
 
 const Registration = () => {
 
@@ -46,20 +46,9 @@ const Registration = () => {
 
     return (
         <div>
-        <AppBar position = "static"
-        alignitems = "center"
-        color = "primary" >
-        <Toolbar>
-        <Grid container justify = "center"
-                wrap = "wrap">
-        <Grid item>
-        <Typography variant = "h6" > </Typography>  
-        </Grid>  
-        </Grid>  
-    </Toolbar>  
-        </AppBar>
+       
 
-
+         <AppBarMenu/>
         <Grid container spacing = {0}
               justify = "center" direction = "row" >
 
