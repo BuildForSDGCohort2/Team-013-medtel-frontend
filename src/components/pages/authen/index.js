@@ -49,7 +49,7 @@ const Login = () => {
         <div>
             
 
-            < AppBarMenu / >
+            <AppBarMenu/>
 
 
             <Grid container spacing = {0} justify = "center"
