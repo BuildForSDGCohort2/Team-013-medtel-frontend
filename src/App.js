@@ -1,18 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/pages/authen/index.js';
-import Registration from './components/pages/registraction/index.js';
-import Home from './components/pages/Home';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-         <Home/>
+import { Router } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router'
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor, getHistory } from './Store';
+// Routes
+import Routes from './Routes';
+import NavBar from './Components/Navigation';
 
-         
-    </div>
-  );
+const history = getHistory()
+
+export default class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedRouter history={history}> { /* place ConnectedRouter under Provider */}
+                    <Router history={history}>
+                        <PersistGate persistor={persistor}>
+                            <NavBar />
+                            <Routes />
+                        </PersistGate>
+                    </Router>
+                </ConnectedRouter>
+            </Provider>
+        );
+    }
 }
-
-export default App;
