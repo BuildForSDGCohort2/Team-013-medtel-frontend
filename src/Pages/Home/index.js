@@ -4,15 +4,15 @@ import {
 } from '@material-ui/core';
 import home1 from "../../Assets/images/home2.png";
 import home2 from "../../Assets/images/home1.png";
-import "./styles.css";
+import useStyles from './styles'
 import Footer from '../../Components/Footer';
 
 
 const Home = () => {
+  const classes = useStyles();
+
   return (
     <div>
-
-
       <div className="contenaire" >
 
         <div className="content-1">
