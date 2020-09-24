@@ -1,16 +1,27 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-  root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-  },
-});
+const useStyles = makeStyles((theme) => ({
+    root: {
+            flexGrow: 1,
+            maxWidth: '100%'
+    },
+    heroSection: {
+        margin: '10% 0',
+    },
+    roundedBtn: {
+        borderRadius: 25,
+        padding: "0.5rem 0.8rem"
+    },
+    heroImage: {
+        [theme.breakpoints.up('md')]: {
+            maxWidth: "100%"
+          },
+        width:'100%'
+    },
+    sectionTwo: {
+        margin: '10% 0',
+    },
+  }));
 
 export default useStyles;

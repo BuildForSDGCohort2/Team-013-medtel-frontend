@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     grow: {
       flexGrow: 1,
+      overflowX: 'hidden'
     },
     menuButton: {
       marginRight: theme.spacing(2),
