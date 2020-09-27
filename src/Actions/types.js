@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:5000/api/v1"
+export const BASE_URL = "https://medtel-team-013.herokuapp.com/api/v1"
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
