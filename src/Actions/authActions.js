@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL, LOGIN_SUCCESS, LOGIN_FAILURE } from './types';
+import { BASE_URL, LOGIN_SUCCESS, SIGN_OUT_SUCCESS, AUTH_FAILURE } from './types';
 import { push } from 'connected-react-router';
 
 
@@ -18,15 +18,20 @@ export const loginUser = (userData, path) => async dispatch => {
             if (err.response){
                 const { data } = err.response
                 dispatch({
-                    type: LOGIN_FAILURE, payload: data.message
+                    type: AUTH_FAILURE, payload: data.message
                 })
             }
             else{
                 dispatch({
-                    type: LOGIN_FAILURE, payload: `Something Went Wrong!`
+                    type: AUTH_FAILURE, payload: `Something Went Wrong!`
                 })
             }
             
         })
 };
 
+export const logout = () => dispatch => {
+    localStorage.removeItem("isAuth")
+    dispatch({type: SIGN_OUT_SUCCESS})
+    dispatch(push('/auth/login'))
+}

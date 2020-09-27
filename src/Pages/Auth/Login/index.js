@@ -8,7 +8,6 @@ import {
     Typography,
     Link,
 } from "@material-ui/core";
-import './index.css';
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,14 +15,15 @@ import {
     useLocation
 } from "react-router-dom";
 import MuiAlert from '@material-ui/lab/Alert';
-
 import { loginUser } from '../../../Actions/authActions';
+import useStyles from './styles'
 
+//Material UI alert component
 const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
   
-
+// Schema for input validation
 const schema = {
     email: {
         presence: { allowEmpty: false, message: 'is required' },
@@ -95,24 +95,19 @@ const Login = () => {
         return formState.touched[field] && formState.errors[field] ? true : false;
     }
 
+    const classes = useStyles()
     return (
         <div>
-            <Grid container spacing={0} justify="center"
-                direction="row" >
-                <Paper variant="elevation" elevation={2} className="login-background" >
-                    <Grid item >
-                        <Typography component="h1" variant="h5" >
-                            Sign in
+            <Grid container justify="center" >
+                <Paper variant="elevation" elevation={2} className={classes.paper} >
+                        <Typography component="h1" variant="h4" >
+                            Sign in to access Medtel
                             </Typography>
                             {authErrors && (<Alert severity="error"> {authErrors} </Alert>)}
 
-                    </Grid>
-
                     <Grid item >
-                        <form onSubmit={handleSignIn}>
+                        <form onSubmit={handleSignIn} className={classes.form}>
 
-                            <Grid container direction="column" spacing={2}>
-                                <Grid item >
                                     <TextField
                                         error={hasError('email')}
                                         fullWidth
@@ -123,12 +118,10 @@ const Login = () => {
                                         name="email"
                                         onChange={handleChange}
                                         type="text"
+                                        margin="normal"
                                         value={formState.values.email || ''}
                                         variant="outlined"
                                     />
-
-                                </Grid>
-                                <Grid item >
                                     <TextField
                                         error={hasError('password')}
                                         fullWidth
@@ -139,26 +132,18 @@ const Login = () => {
                                         label="Password"
                                         name="password"
                                         type="password"
+                                        margin="normal"
                                         value={formState.values.password || ''}
                                         variant="outlined"
                                     />
-
-                                </Grid>
-                                <Grid item >
                                     <Button variant="contained"
                                         color="primary"
                                         type="submit"
                                         disabled={hasError('password') || hasError('email')}
-                                        className="button-block">
-                                        Submit
+                                        className={classes.submit}>
+                                        Sign In
                                 </Button>
-                                </Grid>
-                            </Grid>
                         </form>
-
-                    </Grid>
-
-                    <Grid item >
                         <Link href="#" variant="body2" >
                             Forgot Password ?
                                 </Link>

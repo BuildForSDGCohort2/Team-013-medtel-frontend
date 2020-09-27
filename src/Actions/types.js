@@ -1,7 +1,10 @@
 export const BASE_URL = "http://localhost:5000/api/v1"
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
+
 
 export const FETCH_USERS = 'FETCH_USERS';
 export const UPDATE_USER = 'UPDATE_USER';
