@@ -16,7 +16,6 @@ export default function PrimarySearchAppBar() {
   }
   const {isAuthenticated} = useSelector(state => state.auth)
 
-  console.log(isAuthenticated)
   const guestUser = () => {
     return (
       <AppBar className={classes.appbarColor}>

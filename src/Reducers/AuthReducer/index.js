@@ -28,7 +28,6 @@ const authReducer = (state = initialState, action) => {
                 isAuthenticated: false
             });
         case AUTH_FAILURE:
-            console.log(action.error)
             return Object.assign({}, state, {
                 token: {},
                 authError: action.payload,
