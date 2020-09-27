@@ -2,21 +2,23 @@
 import {LOGIN_SUCCESS, LOGIN_FAILURE} from '../../Actions/types';
 
 export const initialState = {
-    token: {},
-    types: {},
-    fetchError: null
+    token: null,
+    authError: null
 };
 
 const authReducer = (state=initialState, action) => {
     switch(action.type){
         case LOGIN_SUCCESS:
             return Object.assign({}, state, {
-                users_data: action.payload.data
+                token: action.payload,
+                authError: null
             })
         case LOGIN_FAILURE:
-            return {
-                ...state, fetchError: action.error
-            }
+            console.log(action.error)
+            return Object.assign({}, state, {
+                token: {},
+                authError: action.payload
+            })
         default:
             return state;
     }

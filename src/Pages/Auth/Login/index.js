@@ -11,12 +11,18 @@ import {
 import './index.css';
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     useLocation
 } from "react-router-dom";
+import MuiAlert from '@material-ui/lab/Alert';
 
 import { loginUser } from '../../../Actions/authActions';
+
+const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+  
 
 const schema = {
     email: {
@@ -29,9 +35,10 @@ const schema = {
     password: {
         presence: { allowEmpty: false, message: 'is required' },
         length: {
-            maximum: 128
+          minimum: 6,
+          message: "must be at least 6 characters"
         }
-    }
+      }
 };
 
 const Login = () => {
@@ -55,6 +62,10 @@ const Login = () => {
         }));
     }, [formState.values]);
 
+    const authErrors = useSelector((state ) => {
+        return state.auth.authError
+      })
+
     const handleChange = event => {
         event.persist();
         setFormState(formState => ({
@@ -77,11 +88,12 @@ const Login = () => {
         const { values } = formState;
         // Return to previous page after login or return to homepage
         let { from } = location.state || { from: { pathname: "/" } };
-        dispatch(loginUser(values.email, values.password, from))
+        dispatch(loginUser(values, from))
     };
 
-    const hasError = field =>
-        formState.touched[field] && formState.errors[field] ? true : false;
+    const hasError = field => {
+        return formState.touched[field] && formState.errors[field] ? true : false;
+    }
 
     return (
         <div>
@@ -92,10 +104,11 @@ const Login = () => {
                         <Typography component="h1" variant="h5" >
                             Sign in
                             </Typography>
+                            {authErrors && (<Alert severity="error"> {authErrors} </Alert>)}
+
                     </Grid>
 
                     <Grid item >
-
                         <form onSubmit={handleSignIn}>
 
                             <Grid container direction="column" spacing={2}>
@@ -119,13 +132,13 @@ const Login = () => {
                                     <TextField
                                         error={hasError('password')}
                                         fullWidth
+                                        onChange={handleChange}
                                         helperText={
                                             hasError('password') ? formState.errors.password[0] : null
                                         }
                                         label="Password"
                                         name="password"
-                                        onChange={handleChange}
-                                        type="text"
+                                        type="password"
                                         value={formState.values.password || ''}
                                         variant="outlined"
                                     />
@@ -135,6 +148,7 @@ const Login = () => {
                                     <Button variant="contained"
                                         color="primary"
                                         type="submit"
+                                        disabled={hasError('password') || hasError('email')}
                                         className="button-block">
                                         Submit
                                 </Button>
