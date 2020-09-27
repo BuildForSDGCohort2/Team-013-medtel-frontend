@@ -10,8 +10,6 @@ import { Redirect, Route } from 'react-router';
     <Route
      {...rest}
      render={ props => {
-       console.log(props.location)
-
       return isAuthenticated ? (<Component {...props} />)
       : (<Redirect to={
         {
