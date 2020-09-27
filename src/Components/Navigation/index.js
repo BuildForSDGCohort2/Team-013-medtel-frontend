@@ -53,6 +53,7 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
+      <div className={classes.toolbarMargin}></div>
     </div>
   );
 }

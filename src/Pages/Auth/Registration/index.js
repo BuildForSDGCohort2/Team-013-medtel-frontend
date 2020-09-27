@@ -8,7 +8,6 @@ import {
     Typography,
 } from "@material-ui/core";
 import './styles.css';
-import AppBarMenu from '../../menu/AppBar'
 
 const Registration = () => {
 
@@ -41,7 +40,6 @@ const Registration = () => {
 
     return (
         <div>
-            <AppBarMenu />
             <Grid container spacing={0}
                 justify="center" direction="row" >
 

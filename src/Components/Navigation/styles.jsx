@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'block',
       },
     },
+    toolbarMargin: theme.mixins.toolbar,
     appbarColor: {
         background: '#fff'
     },
