@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BASE_URL, LOGIN_SUCCESS, SIGN_OUT_SUCCESS, AUTH_FAILURE } from './types';
+import { BASE_URL, LOGIN_SUCCESS, SIGN_OUT_SUCCESS, AUTH_FAILURE, REGISTER_SUCCESS
+ } from './types';
 import { push } from 'connected-react-router';
 
 
@@ -29,6 +30,34 @@ export const loginUser = (userData, path) => async dispatch => {
             
         })
 };
+
+const USER_ROLE_ID = 2
+export const RegisterUser = (userData, path) => async dispatch => {
+    userData["role_id"] = USER_ROLE_ID
+    await axios.post(`${BASE_URL}/users`, userData)
+    .then(response => {
+        // successful Register
+        dispatch({
+                type: REGISTER_SUCCESS, payload: response.data.access_token
+            })
+            localStorage.setItem("isAuth", true)
+            dispatch(push(path))
+    })
+    .catch(err => {
+        if (err.response){
+            const { data } = err.response
+            dispatch({
+                type: AUTH_FAILURE, payload: data.message
+            })
+        }
+        else{
+            dispatch({
+                type: AUTH_FAILURE, payload: `Something Went Wrong!`
+            })
+        }
+        
+    })
+}
 
 export const logout = () => dispatch => {
     localStorage.removeItem("isAuth")
