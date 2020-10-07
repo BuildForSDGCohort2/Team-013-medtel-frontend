@@ -1,4 +1,4 @@
-export const BASE_URL = "https://medtel-team-013.herokuapp.com/api/v1"
+export const BASE_URL =  "http://localhost:5000/api/v1" //"https://medtel-team-013.herokuapp.com/api/v1"
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
@@ -14,7 +14,7 @@ export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 
 export const FETCH_DOCTORS = 'FETCH_DOCTORS';
 export const UPDATE_DOCTOR = 'UPDATE_DOCTOR';
-export const FETCH_DOCTOR = 'FETCH_DOcTOR';
+export const FETCH_DOCTOR = 'FETCH_DOCTOR';
 
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
